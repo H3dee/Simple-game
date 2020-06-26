@@ -1,0 +1,94 @@
+@import '_reseter';
+
+.wrapper{
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #ff5c5c 0%,#fe9090 55%,#febbbb 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+%title {
+      text-align: center;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: 0.7px;
+            margin: 36px 0;
+}
+
+.game{      
+      background: #ffffff;
+      width: 800px;
+      height: 600px;      
+      border-radius: 15px;
+      overflow: hidden;
+      .game_title{
+            @extend %title;
+      }
+      .game_title_result{
+            @extend %title;
+            display: none;
+      }
+      .game_field{
+            height: 84%;
+            .container{
+                  height: 100%;
+                  max-width: 440px;
+                  margin: 0 auto;
+                  .game_field_row{
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        .field_box{
+                              width: 100%;
+                              height: 350px;
+                              border-radius: 5px;
+                              border: 1px solid #bababa;
+                              display: flex;
+                              position: relative;
+                              justify-content: center;
+                              align-items: center;
+                              background-color: #bababa;
+                              .field_box_button{
+                                    button{
+                                          color: #5b4e43;
+                                          font-size: 16px;
+                                          border-radius: 24px;
+                                          padding: 16px 38px;
+                                          background: #e1c066;
+                                    }
+                                    button:hover {
+                                          background: #ebba34;
+                                          color: #ffffff;
+                                          box-shadow: 0px 5px 5px rgba(27, 27, 27, 0.301);
+                                    }
+                              }
+                        }
+                        .field_timer{
+                              margin: 20px 0px 0px 0px;
+                              .field_timer_title{
+                                    color: #bababa;
+                                    font-size: 13px;
+                                    letter-spacing: 0.6px;
+                                    margin: 0px 0px 10px 0px;
+                              }
+                              input{
+                                    border: 1.05px solid #3f3e3e;
+                                    border-radius: 5px;
+                                    padding: 10px 10px 10px 15px;
+                              }
+                              input:focus {
+                                    border: 1.05px solid #e1c066;
+                                    box-shadow: 0px 0px 4px #e1c066;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+.hide {
+      display: none;
+}
