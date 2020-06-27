@@ -102,10 +102,6 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-.game .game_title_result {
-  display: none;
-}
-
 .game .game_field {
   height: 84%;
 }
@@ -153,7 +149,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   border-radius: 24px;
   padding: 16px 38px;
-  background: #e1c066;
+  background: #ecc559;
 }
 
 .game .game_field .container .game_field_row .field_box .field_box_button button:hover {
@@ -188,4 +184,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hide {
   display: none;
+}
+
+.trigger {
+  border: 1.05px solid #f70000;
 }

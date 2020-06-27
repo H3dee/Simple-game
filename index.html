@@ -13,7 +13,7 @@
         <div class="game_title">
           Время игры: <span id="time">5.0</span>
         </div>
-        <div class="game_title_result">Ваш результат: <span id="result">0</span></div>
+        <div class="game_title_result hide">Ваш результат: <span id="result">0</span></div>
         <div class="game_field">
           <div class="container">
             <div class="game_field_row">
@@ -22,7 +22,7 @@
               </div>
               <div class="field_timer">
                 <div class="field_timer_title">Время игры,(сек)</div>
-                <input type="text" id="time_input" value="5" />
+                <input class="trigger" type="number" min="5" step="1" id="time_input" value="5" />
               </div>
             </div>
           </div>

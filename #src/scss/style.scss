@@ -28,7 +28,6 @@
       }
       .game_title_result{
             @extend %title;
-            display: none;
       }
       .game_field{
             height: 84%;
@@ -57,7 +56,7 @@
                                           font-size: 16px;
                                           border-radius: 24px;
                                           padding: 16px 38px;
-                                          background: #e1c066;
+                                          background: #ecc559;
                                     }
                                     button:hover {
                                           background: #ebba34;
@@ -91,4 +90,8 @@
 
 .hide {
       display: none;
+}
+
+.trigger {
+      border: 1.05px solid #f70000;
 }

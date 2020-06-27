@@ -5,39 +5,46 @@ const $time = document.querySelector("#time");
 const $timeInput = document.querySelector("#time_input");
 const $resultTitle = document.querySelector(".game_title_result");
 const $resultGame = document.querySelector("#result");
+
 let score = 0;
 let isGameStarted = false;
 
 $start.addEventListener("click", startGame);
 $gameField.addEventListener("click", handleBoxClick);
-//$timeInput.addEventListener('keyup', handleInput)
+$timeInput.addEventListener("input", setGameTime);
 
 function startGame() {
-  isGameStarted = true;
-      $start.classList.add("hide");
-      $gameField.style.background = "#fff";
-      $time.textContent = $timeInput.value
-      $resultTitle.style.display = "none";
-      $gameTitle.classList.remove('hide')
+  if ($timeInput.value !== "") {
+    if($timeInput.classList.contains('trigger')) $timeInput.classList.remove('trigger')
+    isGameStarted = true;
+    score = 0;
+    $timeInput.setAttribute("disabled", "true");
+    hideElement($start)
+    $gameField.style.background = "#fff";
+    $time.textContent = $timeInput.value;
+    showElement($gameTitle)
 
-  const interval = setInterval(() => {
-    let time = parseFloat($time.textContent);
-    if (time <= 0) {
-      clearInterval(interval);
-      endGame();
-    } else {
-      $time.textContent = (time - 0.1).toFixed(1);
-    }
-  }, 100);
-  renderBox();
+    const interval = setInterval(() => {
+      let time = parseFloat($time.textContent);
+      if (time <= 0) {
+        clearInterval(interval);
+        endGame();
+      } else {
+        $time.textContent = (time - 0.1).toFixed(1);
+      }
+    }, 100);
+    renderBox();
+  }
+  else if($timeInput.value !== "") $timeInput.classList.add('trigger')
 }
 
 function endGame() {
   isGameStarted = false;
+  $timeInput.removeAttribute("disabled");
   $resultGame.textContent = String(score);
-  $gameTitle.classList.add("hide");
-  $resultTitle.style.display = "block";
-  $start.classList.remove("hide");
+  hideElement($gameTitle)
+  showElement($resultTitle)
+  showElement($start)
   $gameField.style.background = "#bababa";
   let $internalSpace = $gameField.querySelectorAll("div");
   for (let i = 0; i < $internalSpace.length; i++) {
@@ -72,8 +79,19 @@ function handleBoxClick(event) {
   }
 }
 
-function handleInput() {
-  $time.textContent = $timeInput.nodeValue;
+function setGameTime() {
+  hideElement($resultTitle)
+  showElement($gameTitle)
+  let gameTime = $timeInput.value;
+  if(Number(gameTime) !== NaN ) $time.textContent = parseFloat(gameTime).toFixed(1);
+}
+
+function showElement($element){
+  $element.classList.remove('hide')
+}
+
+function hideElement($element){
+  $element.classList.add('hide')
 }
 
 function getRandomValue(min, max) {
